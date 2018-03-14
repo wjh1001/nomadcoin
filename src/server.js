@@ -12,4 +12,4 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan("combined"));
-app.listen(PORT, () => console.log("Nomadcoin Server running on", PORT));
+app.listen(PORT, () => console.log("Nomadcoin Server running on ${PORT}" ));
