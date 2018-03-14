@@ -50,4 +50,20 @@ const createNewBlock = data => {
     return newBlock;
 };
 
-console.log(blockchain);
+const getBlockHash = (block) => createHash(block.index, block.previousHash, block.timestamp, block.data);
+
+
+const isNewBlockchainValid = (candidateBlock, latestBlock) => {
+    if (latestBlock.index + 1 !== candidateBlock.index){
+        console.log("The candidate block doesnt have  a valid index");  
+    return false;
+    } else if(latestBlock.hash !== candidateBlock.previousHash){
+        console.log("The previousHash of the candidate block is not the hash of the lasest block");
+        return false;
+    } else if(getBlockHash(candidateBlock) !== candidateBlock.hash){
+        console.log("The hash of this block is invalid");
+        return false;
+    }
+    return true;
+};
+}
