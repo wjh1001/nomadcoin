@@ -1,0 +1,9 @@
+{
+  "name": "nomadcoin",
+  "version": "1.0.0",
+  "description": "Nomadcoin, the most awesome code made in NodeJS",
+  "main": "src/server.js",
+  "repository": "https://github.com/wjh1001/nomadcoin.git",
+  "author": "Andy Woo <cheese.wo@gmail.com>",
+  "license": "MIT"
+}
