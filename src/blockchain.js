@@ -102,3 +102,21 @@ const isChainValid = cadidateChain => {
     }
     return true;
 }
+
+
+const replaceChain = candidateChain => {
+    if(isChainValid(candidateChain) && candidateChain.length > blockchain.lengh)
+    blockchain = candidateChain;
+    return true;
+} else {
+    return false;
+}
+
+const addBlockToChain = candidateBlock  => {
+    if(isNewBlockValid(candidateBlock, getLastBlock())){
+        blockchain.push(candidateBlock);
+        return true;
+    } else {
+        return true;
+    }
+}
