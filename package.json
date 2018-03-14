@@ -5,5 +5,8 @@
   "main": "src/server.js",
   "repository": "https://github.com/wjh1001/nomadcoin.git",
   "author": "Andy Woo <cheese.wo@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  }
 }
