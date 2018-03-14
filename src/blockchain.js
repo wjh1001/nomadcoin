@@ -80,7 +80,7 @@ const isNewStructureValid = block => {
     typeof block.index === "number" && 
     typeof block.hash === "string" &&
     typeof block.previousHash === "string" &&
-    typeof block.timestamp === "number"
+    typeof block.timestamp === "number" &&
     typeof block.data === "string"
     );
     
@@ -97,7 +97,7 @@ const isChainValid = cadidateChain => {
         );
         return false;
     }
-    for(let i= 1; i < candidateChain.length; 1++){
+    for(let i= 1; i < candidateChain.length; i++){
         if(!isNewBlockValid(candidateChain[i], candidateChain[i - 1])) {
             return false;
         }
@@ -105,15 +105,17 @@ const isChainValid = cadidateChain => {
     return true;
 }
 
-
 const replaceChain = candidateChain => {
-    if(isChainValid(candidateChain) && 
-    candidateChain.length > getBlockchain().lengh)
-    blockchain = candidateChain;
-    return true;
-} else {
-    return false;
-}
+    if (
+      isChainValid(candidateChain) &&
+      candidateChain.length > getBlockchain().length
+    ) {
+      blockchain = candidateChain;
+      return true;
+    } else {
+      return false;
+    }
+  };
 
 const addBlockToChain = candidateBlock  => {
     if(isNewBlockValid(candidateBlock, getLastBlock())){
@@ -122,4 +124,9 @@ const addBlockToChain = candidateBlock  => {
     } else {
         return true;
     }
-}
+};
+
+module.exports = {
+    getBlockchain,
+    createNewBlock
+};
