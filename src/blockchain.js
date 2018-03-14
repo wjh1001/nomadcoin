@@ -55,7 +55,11 @@ const getBlockHash = (block) => createHash(block.index, block.previousHash, bloc
 
 
 const isNewBlockchainValid = (candidateBlock, latestBlock) => {
-    if (latestBlock.index + 1 !== candidateBlock.index){
+    if(!isNewStructureValid(candidateBlock)){
+        console.log("The candidate block structure is not valid")
+        return false;
+    }
+    else if (latestBlock.index + 1 !== candidateBlock.index){
         console.log("The candidate block doesnt have  a valid index");  
     return false;
     } else if(latestBlock.hash !== candidateBlock.previousHash){
@@ -78,4 +82,23 @@ const isNewStructureValid = block => {
     typeof block.data === "string"
     );
     
+}
+
+
+const isChainValid = cadidateChain => {
+    const isGenesisValid = block => {
+        return JSON.stringify(block) === JOSN.stringify(genesisBlock);
+    };
+    if (!isGenesisValid(candidateChain[0]) ){
+        console.log(
+            "The candidateChain's genesisBlock is not the same as our genesisBlock"
+        );
+        return false;
+    }
+    for(let i= 1; i < candidateChain.length; 1++){
+        if(!isNewBlockValid(candidateChain[i], candidateChain[i - 1])) {
+            return false;
+        }
+    }
+    return true;
 }
