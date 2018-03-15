@@ -1,6 +1,8 @@
 const WebSockets = require("ws");
 
-const socket = [];
+const sockets = [];
+
+const getSockets = () => sockets;
 
 const startP2PServer = server => {
     const wsServer = new WebSockets.Server( { server });
@@ -11,6 +13,24 @@ const startP2PServer = server => {
 
 }
 
+
+const initSocketConnection = socket => {
+    sockets.push(socket);
+}
+
+
+const connectToPeers = newPeer = open => {
+    const ws = new WebSockets(newPeer);
+    ws.on("open", () => {
+        initSocketConnection(ws);
+
+    })
+}
+
+
+
 module.exports = {
-    startP2PServer
+    startP2PServer,
+    connectToPeers
+
 }
