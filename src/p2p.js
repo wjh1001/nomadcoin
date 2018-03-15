@@ -1,7 +1,7 @@
 const WebSockets = require("ws"),
   Blockchain = require("./blockchain");
 
-const { getLastBlock } => Blockchain;
+const { getLastBlock } = Blockchain;
 
 
 const sockets = [];
@@ -16,7 +16,7 @@ const BLOCKCHAIN_RESPONSE = "BLOCKCHAIN_RESPONSE";
 
 // Message Creators
 
-const getLastBlock = () => {
+const getLatest = () => {
   return{
     type: GET_LATEST,
     data: null
