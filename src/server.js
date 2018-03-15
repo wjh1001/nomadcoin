@@ -28,6 +28,6 @@ app.post("/blocks", (req, res) => {
 
 
 
-
-
-app.listen(PORT, () => console.log(`Nomadcoin Server running on ${PORT}` ));
+const server = app.listen(PORT, () => 
+console.log(`Nomadcoin HTTP Server running on ${PORT}` )
+);
