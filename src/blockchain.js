@@ -56,7 +56,7 @@ const getBlocksHash = block =>
   createHash(block.index, block.previousHash, block.timestamp, block.data);
 
 const isBlockValid = (candidateBlock, latestBlock) => {
-  if (!isStructureValid(candidateBlock)) {
+  if (!isBlockStructureValid(candidateBlock)) {
     console.log("The candidate block structure is not valid");
     return false;
   } else if (latestBlock.index + 1 !== candidateBlock.index) {
