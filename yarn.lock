@@ -315,3 +315,7 @@ utils-merge@1.0.1:
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+
+wb@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/wb/-/wb-0.0.1.tgz#c3748e3caf022920dd70ca7bca1baf740cea13e6"
