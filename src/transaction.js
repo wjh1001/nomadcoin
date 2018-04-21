@@ -1,4 +1,9 @@
-const CryptoJS = require('crypto-js')
+const CryptoJS = require('crypto-js'),
+  elliptic = require('elliptic')
+
+// Create and initialize EC context
+// (better do it once and reuse it)
+var ec = new EC('secp256k1')
 
 class TxOut {
   constructor (address, amount) {
@@ -35,4 +40,14 @@ const getTxId = tx => {
 
   const txOutContent = tx.txOuts.map(txOut => txOut.address + txOut.amount).reduce((a, b) => a + b, '')
   return CryptoJS.SHA256(txInContent + txOutContent).toString()
+}
+
+const signTxIn = (tx, txInIndex, privateKey, uTxout) => {
+  const txIn = tx.txIns[txIndex]
+  const dataToSign = tx.id
+	// To do: Find Tx
+  const referencedTxOut = null
+  if (referencedTxOut === null) {
+
+  }
 }
