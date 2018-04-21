@@ -1,9 +1,10 @@
 const CryptoJS = require('crypto-js'),
-  elliptic = require('elliptic')
+  elliptic = require('elliptic'),
+  utils = require('./utils')
 
 // Create and initialize EC context
 // (better do it once and reuse it)
-var ec = new EC('secp256k1')
+var ec = new elliptic.ec('secp256k1')
 
 class TxOut {
   constructor (address, amount) {
@@ -50,9 +51,12 @@ const signTxIn = (tx, txInIndex, privateKey, uTxout) => {
   const txIn = tx.txIns[txIndex]
   const dataToSign = tx.id
 	// To do: Find Tx
-  const referencedTxOut = findUTxOut(txIn.txOutId, tx.txOutIndex, uTxOuts);
+  const referencedTxOut = findUTxOut(txIn.txOutId, tx.txOutIndex, uTxOuts)
   if (referencedTxOut === null) {
-    return;
+    return
   }
-  // To do: Sign txIn
+	// To do: Sign txIn
+  const key = ec.keyFromPrivate(privateKey, 'hex')
+  const signature = utils.toHexString(key.sign(dataToSign).toDER())
+  return signature
 }
